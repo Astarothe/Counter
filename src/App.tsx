@@ -27,7 +27,7 @@ function App() {
     let [error, setError] = useState<errorInputType>({
             [errorInputStartId]: {error: null},
             [errorInputMaxId]: {error: null},
-            [errorButtonSetId]: {error: "max"},
+            [errorButtonSetId]: {error: "error"},
             [errorCountTable]: {error: null},
         }
     )
@@ -55,7 +55,7 @@ function App() {
     const conditionError = () => {
         if (startCount < 0) {
             error[errorInputStartId].error = "error"
-            error[errorButtonSetId].error = "max"
+            error[errorButtonSetId].error = "error"
         } else if (startCount >= 0 && disabledButton) {
             error[errorInputStartId].error = null
             error[errorButtonSetId].error = null
@@ -67,7 +67,7 @@ function App() {
         if (maxCount <= startCount) {
             error[errorInputStartId].error = "error"
             error[errorInputMaxId].error = "error"
-            error[errorButtonSetId].error = "max"
+            error[errorButtonSetId].error = "error"
         } else if (maxCount > startCount && disabledButton) {
             error[errorInputMaxId].error = null
             error[errorButtonSetId].error = null
@@ -92,7 +92,7 @@ function App() {
     const reset = () => setCount(startCount);
 
     const setValue = () => {
-        error[errorButtonSetId].error = "max"
+        error[errorButtonSetId].error = "error"
         setError({...error})
 
         setDisabledButton(null);
