@@ -20,6 +20,7 @@ function App() {
     const errorButtonSetId = "3";
     const errorCountTable = "4";
 
+
     let [count, setCount] = useState(initialiseValue);
     let [maxCount, setMaxCount] = useState(initialiseMaxValue);
     let [startCount, setStartCount] = useState(initialiseValue)
@@ -42,7 +43,6 @@ function App() {
         error[errorInputMaxId].error ||
         error[errorButtonSetId].error
     ) ? true : changeDisabledButton
-
 
 
     const conditionErrorCountMax = () => {
@@ -102,6 +102,19 @@ function App() {
     }
 
 
+    useEffect(() => {
+        let counterValue = localStorage.getItem("CounterValue");
+        let counterMaxValue = localStorage.getItem("CounterMaxValue");
+        let counterStartValue = localStorage.getItem("CounterStartValue");
+        if (counterValue) setCount(JSON.parse(counterValue))
+        if (counterMaxValue) setMaxCount(JSON.parse(counterMaxValue))
+        if (counterStartValue) setStartCount(JSON.parse(counterStartValue))
+    }, [])
+    useEffect(() => {
+        localStorage.setItem("CounterValue", JSON.stringify(count))
+        localStorage.setItem("CounterMaxValue", JSON.stringify(maxCount))
+        localStorage.setItem("CounterStartValue", JSON.stringify(startCount))
+    }, [count])
 
     useEffect(conditionErrorCountMax, [count, maxCount])
 
