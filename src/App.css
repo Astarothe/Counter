@@ -4,12 +4,12 @@ body {
 
 .App {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .Monitor {
     border: 2px solid cyan;
-    width: 350px;
+    width: 400px;
     height: 300px;
     background-color: #282c34;
     margin-top: 20%;
@@ -36,10 +36,11 @@ body {
     margin: 15px;
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 11px;
 }
-.btn{
+
+.btn {
     width: 135px;
     height: 50px;
     border-radius: 10px;
@@ -49,17 +50,63 @@ body {
     font-size: 30px;
     font-weight: 800;
 }
+
 .btn:hover {
     opacity: 0.8;
 }
+
 .maxNumber {
-    color:red;
+    color: red;
     display: inline-block;
     font-size: 85px;
     margin-top: 28px;
     font-weight: 700;
 }
+
 .btn:disabled {
     opacity: 0.3;
     color: black;
+}
+
+.wrapperInputs {
+    height: 60%;
+    text-align: center;
+    margin: 15px;
+    border-radius: 5px;
+    border: 2px solid cyan;
+}
+
+.wrapperItem {
+    color: cyan;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 38px auto;
+}
+
+.label {
+    display: flex;
+    justify-content: space-around;
+}
+
+.input {
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid cyan;
+    width: 120px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.error {
+    border: 2px solid red;
+}
+.errorClass {
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 74px;
+    margin-bottom: 73px;
+}
+
+.incorrectValue {
+    color: red;
 }
