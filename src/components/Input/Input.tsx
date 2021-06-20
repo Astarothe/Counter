@@ -10,12 +10,13 @@ type InputPropsType = {
 
 export function Input(props:InputPropsType) {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.callback(JSON.parse(e.currentTarget.value));
+    const finalInputClassName = `${"input"} ${props.error ? props.error : ""}`
 
     return (
         <div className={"wrapperItem"}>
             <label className={"label"}>
                 {props.title}
-                <input className={`${"input"} ${props.error ? props.error : ""}`} type="number" value={props.countValue} onChange={onChangeHandler}  />
+                <input className={finalInputClassName} type="number" value={props.countValue} onChange={onChangeHandler}  />
             </label>
 
         </div>

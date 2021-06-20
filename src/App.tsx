@@ -11,8 +11,8 @@ type errorInputType = {
 }
 
 function App() {
-    const initNumber = 0;
-    const maxInitialise = 5;
+    const initialiseValue = 0;
+    const initialiseMaxValue = 5;
     const stepUp = 1;
 
     const errorInputStartId = "1";
@@ -20,9 +20,9 @@ function App() {
     const errorButtonSetId = "3";
     const errorCountTable = "4";
 
-    let [count, setCount] = useState(initNumber);
-    let [maxCount, setMaxCount] = useState(maxInitialise);
-    let [startCount, setStartCount] = useState(initNumber)
+    let [count, setCount] = useState(initialiseValue);
+    let [maxCount, setMaxCount] = useState(initialiseMaxValue);
+    let [startCount, setStartCount] = useState(initialiseValue)
     let [disabledButton, setDisabledButton] = useState<null | boolean>(null)
     let [error, setError] = useState<errorInputType>({
             [errorInputStartId]: {error: null},
@@ -32,27 +32,26 @@ function App() {
         }
     )
 
-    let disabledReset = startCount === count;
-    let disabledIncrement = maxCount === count;
-    let disabledSetValue = false;
+    let disabledResetButton = startCount === count;
+    let disabledIncrementButton = maxCount === count;
+    let disabledSetValueButton = false;
 
-    const checkDisabled = (checkDisabledButton: boolean): boolean => disabledButton ? disabledButton : checkDisabledButton;
-    const checkDisabled2 = (checkDisabledButton: boolean): boolean => (
+    const checkDisabled = (changeDisabledButton: boolean): boolean => disabledButton ? disabledButton : changeDisabledButton;
+    const checkDisabledSet = (changeDisabledButton: boolean): boolean => (
         error[errorInputStartId].error ||
         error[errorInputMaxId].error ||
         error[errorButtonSetId].error
-    ) ? true : checkDisabledButton
+    ) ? true : changeDisabledButton
+
+
 
     const conditionErrorCountMax = () => {
-        if (maxCount === count) {
-            error[errorCountTable].error = "maxNumber";
-        } else {
-            error[errorCountTable].error = null;
-        }
+        (maxCount === count) ? error[errorCountTable].error = "maxValue" : error[errorCountTable].error = null;
+
         setError({...error})
     }
 
-    const conditionError = () => {
+    const conditionErrorAll = () => {
         if (startCount < 0) {
             error[errorInputStartId].error = "error"
             error[errorButtonSetId].error = "error"
@@ -74,21 +73,17 @@ function App() {
         setError({...error})
     }
 
-    useEffect(conditionErrorCountMax, [count, maxCount])
-
-    useEffect(conditionError, [startCount, maxCount])
-
-
-    const increment = () => {
+    const incrementHandler = () => {
         if (count < maxCount) setCount(count + stepUp)
         else {
-            error[errorCountTable].error = "maxNumber";
+            error[errorCountTable].error = "maxValue";
             setError({...error})
         }
     }
-    const reset = () => setCount(startCount);
 
-    const setValue = () => {
+    const resetHandler = () => setCount(startCount);
+
+    const saveSettingsHandler = () => {
         error[errorButtonSetId].error = "error"
         setError({...error})
 
@@ -106,6 +101,12 @@ function App() {
         setStartCount(startNumber)
     }
 
+
+
+    useEffect(conditionErrorCountMax, [count, maxCount])
+
+    useEffect(conditionErrorAll, [startCount, maxCount])
+
     return (
         <div className={"App"}>
             <div className={"Monitor"}>
@@ -120,7 +121,8 @@ function App() {
                            error={error[errorInputStartId].error}/>
                 </div>
                 <div className={"wrapperButton"}>
-                    <Button text={"set"} callback={setValue} disabled={checkDisabled2(disabledSetValue)}/>
+                    <Button text={"set"} callback={saveSettingsHandler}
+                            disabled={checkDisabledSet(disabledSetValueButton)}/>
                 </div>
             </div>
 
@@ -132,8 +134,9 @@ function App() {
                        errorInputStart={error[errorInputStartId].error}
                        errorInputMax={error[errorInputMaxId].error}/>
                 <div className={"wrapperButton"}>
-                    <Button text={"inc"} callback={increment} disabled={checkDisabled(disabledIncrement)}/>
-                    <Button text={"reset"} callback={reset} disabled={checkDisabled(disabledReset)}/>
+                    <Button text={"inc"} callback={incrementHandler} disabled={checkDisabled(disabledIncrementButton)}/>
+                    <Button text={"reset"} callback={resetHandler}
+                            disabled={checkDisabled(disabledResetButton)}/>
                 </div>
             </div>
         </div>

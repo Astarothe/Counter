@@ -11,7 +11,12 @@ type CountPropsType = {
 }
 
 export function Count(props: CountPropsType) {
-    let FinalClassNameSpan = `${"count"} ${props.error ? props.error : ""} ${props.disabled ? "errorClass" : ""} ${props.errorInputStart || props.errorInputMax ? "incorrectValue" : ""}`
+    let FinalClassNameCountValue = `
+    ${"count"} ${props.error ? props.error : ""} 
+    ${props.disabled ? "errorClass" : ""} 
+    ${props.errorInputStart || props.errorInputMax ? "incorrectValue" : ""}
+    `
+    let finalClassNameWrapperCount = `${"wrapperCount"} ${props.disabled ? "wrapperCountSet" : ""}`
 
     let text;
     if (props.disabled) {
@@ -22,8 +27,8 @@ export function Count(props: CountPropsType) {
     }
 
     return (
-        <div className={`${"wrapperCount"} ${props.disabled ? "wrapperCountSet"  : ""}`}>
-            <h1 className={FinalClassNameSpan}>{text}</h1>
+        <div className={finalClassNameWrapperCount}>
+            <h1 className={FinalClassNameCountValue}>{text}</h1>
         </div>
     );
 }
