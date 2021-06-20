@@ -1,38 +1,65 @@
+body {
+    background-color: #282c34;
+}
+
 .App {
-  text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Monitor {
+    border: 2px solid cyan;
+    width: 350px;
+    height: 300px;
+    background-color: #282c34;
+    margin-top: 20%;
+    border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapperCount {
+    background: cyan;
+    height: 60%;
+    text-align: center;
+    margin: 15px;
+    border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.count {
+    display: inline-block;
+    font-size: 85px;
+    margin-top: 28px;
 }
 
-.App-link {
-  color: #61dafb;
+.wrapperButton {
+    border: 2px solid cyan;
+    text-align: center;
+    margin: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn{
+    width: 135px;
+    height: 50px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid black;
+    background-color: cyan;
+    font-size: 30px;
+    font-weight: 800;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+.maxNumber {
+    color:red;
+    display: inline-block;
+    font-size: 85px;
+    margin-top: 28px;
+    font-weight: 700;
+}
+.btn:disabled {
+    opacity: 0.3;
+    color: black;
 }
