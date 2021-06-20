@@ -22,6 +22,7 @@ body {
     text-align: center;
     margin: 15px;
     border-radius: 5px;
+    border: 2px solid cyan;
 }
 
 .count {
@@ -109,4 +110,9 @@ body {
 
 .incorrectValue {
     color: red;
+}
+.wrapperCountSet{
+    background: none;
+    border: 2px solid cyan;
+    color:  cyan;
 }

@@ -7,10 +7,11 @@ type CountPropsType = {
     error: string | null
     disabled: boolean | null
     errorInputStart: string | null
+    errorInputMax: string | null
 }
 
 export function Count(props: CountPropsType) {
-    let FinalClassNameSpan = `${"count"} ${props.error ? props.error : ""} ${props.disabled ? "errorClass" : ""} ${props.errorInputStart ? "incorrectValue" : ""}`
+    let FinalClassNameSpan = `${"count"} ${props.error ? props.error : ""} ${props.disabled ? "errorClass" : ""} ${props.errorInputStart || props.errorInputMax ? "incorrectValue" : ""}`
 
     let text;
     if (props.disabled) {
@@ -22,7 +23,7 @@ export function Count(props: CountPropsType) {
         text = props.count
     }
     return (
-        <div className={"wrapperCount"}>
+        <div className={`${"wrapperCount"} ${props.disabled ? "wrapperCountSet"  : ""}`}>
             <h1 className={FinalClassNameSpan}>{text}</h1>
         </div>
     );
