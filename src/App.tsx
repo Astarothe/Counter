@@ -31,7 +31,6 @@ function App() {
             [errorCountTable]: {error: null},
         }
     )
-    console.log(error[errorInputStartId])
 
     let disabledReset = startCount === count;
     let disabledIncrement = maxCount === count;
@@ -42,9 +41,7 @@ function App() {
         error[errorInputStartId].error ||
         error[errorInputMaxId].error ||
         error[errorButtonSetId].error
-    )
-        ? true
-        : checkDisabledButton
+    ) ? true : checkDisabledButton
 
     const conditionErrorCountMax = () => {
         if (maxCount === count) {

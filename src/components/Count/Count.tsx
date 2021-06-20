@@ -16,12 +16,11 @@ export function Count(props: CountPropsType) {
     let text;
     if (props.disabled) {
         text = "enter values and press 'set'";
-        if (props.errorInputStart) {
-            text = "incorrect value"
-        }
+        if (props.errorInputStart) text = "incorrect value"
     } else {
         text = props.count
     }
+
     return (
         <div className={`${"wrapperCount"} ${props.disabled ? "wrapperCountSet"  : ""}`}>
             <h1 className={FinalClassNameSpan}>{text}</h1>
