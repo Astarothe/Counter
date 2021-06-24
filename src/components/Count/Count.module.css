@@ -1,0 +1,30 @@
+.count {
+    display: inline-block;
+    font-size: 85px;
+    margin-top: 28px;
+}
+
+.errorClass {
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 74px;
+    margin-bottom: 73px;
+}
+
+.incorrectValue {
+    color: red;
+}
+
+.wrapperCount {
+    background: cyan;
+    height: 60%;
+    text-align: center;
+    margin: 15px;
+    border-radius: 5px;
+    border: 2px solid cyan;
+}
+.wrapperCountSet{
+    background: none;
+    border: 2px solid cyan;
+    color:  cyan;
+}

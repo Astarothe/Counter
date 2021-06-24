@@ -1,5 +1,6 @@
 import React from 'react';
-import "../../App.css"
+import "../../App.module.css"
+import s from "./Button.module.css"
 
 type ButtonPropsType = {
     text: string
@@ -10,7 +11,7 @@ type ButtonPropsType = {
 export function Button(props: ButtonPropsType) {
     return (
         <div>
-            <button disabled={props.disabled} className={"btn"} onClick={props.callback}>{props.text}</button>
+            <button disabled={props.disabled} className={s.btn} onClick={props.callback}>{props.text}</button>
         </div>
     );
 }

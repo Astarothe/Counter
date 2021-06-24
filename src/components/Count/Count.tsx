@@ -1,5 +1,6 @@
 import React from 'react';
-import "../../App.css"
+import "../../App.module.css"
+import s from "./Count.module.css"
 
 type CountPropsType = {
     count: number
@@ -11,19 +12,22 @@ type CountPropsType = {
 }
 
 export function Count(props: CountPropsType) {
-    let FinalClassNameCountValue = `
-    ${"count"} ${props.error ? props.error : ""} 
-    ${props.disabled ? "errorClass" : ""} 
-    ${props.errorInputStart || props.errorInputMax ? "incorrectValue" : ""}
-    `
-    let finalClassNameWrapperCount = `${"wrapperCount"} ${props.disabled ? "wrapperCountSet" : ""}`
+    const textPressSet = "enter values and press 'set'"
+    const textIncorrectValue = "incorrect value"
+    let text: string;
 
-    let text;
+    const FinalClassNameCountValue = `
+    ${s.count} ${props.error ?? ""} 
+    ${props.disabled ? s.errorClass : ""} 
+    ${props.errorInputStart || props.errorInputMax ? s.incorrectValue : ""}
+    `
+    const finalClassNameWrapperCount = `${s.wrapperCount} ${props.disabled ? s.wrapperCountSet : ""}`
+
     if (props.disabled) {
-        text = "enter values and press 'set'";
-        if (props.errorInputStart) text = "incorrect value"
+        text = textPressSet;
+        if (props.errorInputStart) text = textIncorrectValue
     } else {
-        text = props.count
+        text = (props.count).toString()
     }
 
     return (

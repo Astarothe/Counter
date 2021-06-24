@@ -1,0 +1,24 @@
+.wrapperItem {
+    color: cyan;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 38px auto;
+}
+
+.label {
+    display: flex;
+    justify-content: space-around;
+}
+.input {
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid cyan;
+    width: 120px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.error {
+    border: 2px solid red;
+    background: indianred;
+}
